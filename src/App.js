@@ -20,12 +20,19 @@ function App() {
 				});
 		getCountriesData();
 	}, []);
+
+	const onCountryChange = (event) => {
+		const countryCode = event.target.value;
+
+		setCountry(countryCode);
+	};
+
 	return (
 		<div className='app'>
 			<div className='app__header'>
 				<h1>COVID 19 tracker</h1>
 				<FormControl className='app__dropdown'>
-					<Select variant='outlined' value={country}>
+					<Select variant='outlined' value={country} onChange={onCountryChange}>
 						{/* Loop through all the countries and show the dropdown */}
 						<MenuItem value='worldwide'>Worldwide</MenuItem>
 						{countries.map((country) => (
